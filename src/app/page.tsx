@@ -8,70 +8,64 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#050505]">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-[100] border-b border-zinc-200 bg-white/70 backdrop-blur-xl dark:border-zinc-800 dark:bg-black/70">
-        <div className="container mx-auto flex h-16 items-center justify-between px-6">
-          <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
-              <Icons.Compass size={18} />
-            </div>
-            <span className="text-xl font-black tracking-tighter text-zinc-900 dark:text-white">FUTUREPATH</span>
-          </div>
-          <div className="hidden gap-8 text-sm font-bold text-zinc-500 md:flex">
-            <a href="#" className="text-zinc-900 dark:text-white">Explore</a>
-            <a href="#" className="hover:text-zinc-900 dark:hover:text-white">Mentorship</a>
-            <a href="#" className="hover:text-zinc-900 dark:hover:text-white">Simulations</a>
-          </div>
-          <button className="rounded-full bg-zinc-900 px-5 py-2 text-sm font-bold text-white dark:bg-white dark:text-black">
-            Sign In
-          </button>
-        </div>
-      </nav>
+    <div className="flex min-h-screen flex-col">
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col items-center text-center">
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
+        <div className="container relative z-10 mx-auto px-6">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+            }}
+            className="flex flex-col items-center text-center"
+          >
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-6 flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 text-sm font-bold text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              className="mb-6 flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-50/50 px-5 py-2 text-sm font-bold text-blue-600 backdrop-blur-md dark:bg-blue-900/20 dark:text-blue-400"
             >
-              <Icons.Sparkles size={16} />
+              <Icons.Sparkles size={16} className="animate-pulse" />
               <span>Next-Gen Career Intelligence</span>
             </motion.div>
+
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mb-6 max-w-4xl text-6xl font-black leading-[1.1] tracking-tight text-zinc-900 dark:text-white md:text-8xl"
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              className="mb-6 max-w-5xl text-6xl font-black leading-[1.1] tracking-tight text-zinc-900 dark:text-white md:text-8xl"
             >
-              Master Your <span className="text-blue-600 underline decoration-blue-500/30 underline-offset-8">Future</span> Before It Starts.
+              Master Your <span className="relative inline-block text-blue-600">
+                Future
+                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.00003 6.99999C44.3334 2.16666 142.4 -4.20001 198 6.99999" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span> Before It Starts.
             </motion.h1>
+
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
               className="mb-10 max-w-2xl text-xl font-medium text-zinc-500 dark:text-zinc-400 md:text-2xl"
             >
               Immersive simulations and real-world insights for India's most competitive career paths.
             </motion.p>
+
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
               className="flex flex-col gap-4 sm:flex-row"
             >
-              <button className="group flex items-center gap-2 rounded-2xl bg-blue-600 px-8 py-5 text-lg font-black text-white shadow-2xl shadow-blue-500/40 transition-all hover:bg-blue-700 hover:shadow-blue-500/60">
-                <span>Start Free Assessment</span>
-                <Icons.ArrowRight className="transition-transform group-hover:translate-x-1" size={20} />
+              <button className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-blue-600 px-8 py-4 text-lg font-black text-white shadow-[0_0_40px_rgba(37,99,235,0.4)] transition-all hover:scale-105 hover:bg-blue-700 hover:shadow-[0_0_60px_rgba(37,99,235,0.6)]">
+                <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
+                  <div className="relative h-full w-8 bg-white/20" />
+                </div>
+                <span className="relative z-10">Start Free Assessment</span>
+                <Icons.ArrowRight className="relative z-10 transition-transform group-hover:translate-x-1" size={20} />
               </button>
-              <button className="flex items-center justify-center gap-2 rounded-2xl bg-white px-8 py-5 text-lg font-black text-zinc-900 shadow-sm ring-1 ring-zinc-200 transition-all hover:bg-zinc-50 dark:bg-zinc-900 dark:text-white dark:ring-zinc-800">
-                <Icons.PlayCircle size={20} />
-                Explore Demo
-              </button>
+              <Link href="/dashboard" className="flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-black text-zinc-900 shadow-sm ring-1 ring-zinc-200 transition-all hover:scale-105 hover:bg-zinc-50 dark:bg-zinc-900 dark:text-white dark:ring-zinc-800">
+                <Icons.LayoutDashboard size={20} />
+                View Dashboard
+              </Link>
             </motion.div>
+          </motion.div>
           </div>
         </div>
 

@@ -15,12 +15,14 @@ export function CareerCard({ career }: CareerCardProps) {
 
   return (
     <motion.div
-      whileHover={{ y: -8, scale: 1.02 }}
+      whileHover={{ y: -8 }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-sm ring-1 ring-zinc-200 transition-all hover:shadow-2xl dark:bg-zinc-900 dark:ring-zinc-800"
+      className="group relative flex flex-col h-full overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-[0_0_0_1px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:bg-zinc-900 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.05)]"
     >
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-white to-zinc-50 opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:from-zinc-900 dark:to-black" />
+      <div className="relative z-10 flex-1 flex flex-col">
       <div
         className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl shadow-inner transition-transform group-hover:rotate-6"
         style={{ backgroundColor: `${career.color}15`, color: career.color }}
@@ -67,9 +69,11 @@ export function CareerCard({ career }: CareerCardProps) {
         </Link>
       </div>
 
-      {/* Background Accent */}
+      </div>
+
+      {/* Premium Glow Effect */}
       <div
-        className="absolute -right-4 -top-4 h-24 w-24 rounded-full opacity-[0.03] transition-transform group-hover:scale-150"
+        className="absolute -right-20 -top-20 z-0 h-40 w-40 rounded-full opacity-0 blur-3xl transition-all duration-700 group-hover:opacity-20"
         style={{ backgroundColor: career.color }}
       />
     </motion.div>
