@@ -66,8 +66,8 @@ export default function Home() {
               </Link>
             </motion.div>
           </motion.div>
-          </div>
         </div>
+
 
         {/* Dynamic Orbs */}
         <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-blue-500/20 blur-[100px] dark:bg-blue-500/10" />
